@@ -61,7 +61,7 @@ func (g *Game) Log(log string, items ...interface{}) {
 	g.logs = append(g.logs, toLog)
 }
 
-func (g *Game) dumpLogs() {
+func (g *Game) DumpLogs() {
 	if g.debug {
 		fmt.Println("=== Logs: ===")
 		for _, l := range g.logs {
@@ -89,7 +89,7 @@ func (g *Game) Start() {
 	if err != nil {
 		panic(err)
 	}
-	defer g.dumpLogs()
+	defer g.DumpLogs()
 	defer termbox.Close()
 	g.screen.Resize(termbox.Size())
 
