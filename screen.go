@@ -136,6 +136,14 @@ func (s *Screen) SetFps(f float64) {
 	s.fps = f
 }
 
+// Get the screen framerate.  By default, termloop will draw the
+// the screen as fast as possible, which may use a lot of system
+// resources.
+func (s *Screen) GetFps() float64 {
+	return s.fps
+}
+
+
 // RenderCell updates the Cell at a given position on the Screen
 // with the attributes in Cell c.
 func (s *Screen) RenderCell(x, y int, c *Cell) {

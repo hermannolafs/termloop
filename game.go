@@ -35,6 +35,16 @@ func (g *Game) Input() *Input {
 	return g.input
 }
 
+// Starts listening for input
+func (g *Game) StartListeningForInput() {
+	g.input.start()
+}
+
+// Stops listening for input
+func (g *Game) StopListeningForInput() {
+	g.input.stop()
+}
+
 // SetScreen sets the current Screen of a Game.
 func (g *Game) SetScreen(s *Screen) {
 	g.screen = s
