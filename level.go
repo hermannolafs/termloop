@@ -27,9 +27,9 @@ func NewBaseLevel(bg Cell) *BaseLevel {
 }
 
 // Tick handles any collisions between Physicals in the level's entities,
-// and processes any input.
+// and processes any Input.
 func (l *BaseLevel) Tick(ev Event) {
-	// Handle input
+	// Handle Input
 	for _, e := range l.Entities {
 		e.Tick(ev)
 	}
