@@ -41,6 +41,11 @@ func (s *Screen) Tick(ev Event) {
 	}
 }
 
+// TickTermboxEvent is used to process termbox events such as Input
+func (s *Screen) TickTermboxEvent(ev termbox.Event) {
+	s.Tick(convertEvent(ev))
+}
+
 // Draw is called every frame by the Game to render the current
 // state of the screen.
 func (s *Screen) Draw() {
