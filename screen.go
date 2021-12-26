@@ -119,6 +119,11 @@ func (s *Screen) TimeDelta() float64 {
 	return s.delta
 }
 
+// SetTimeDelta sets the delta for Screen
+func (s *Screen) SetTimeDelta(delta float64) {
+	s.delta = delta
+}
+
 // Set the screen framerate.  By default, termloop will draw the
 // the screen as fast as possible, which may use a lot of system
 // resources.

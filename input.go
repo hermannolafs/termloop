@@ -8,6 +8,10 @@ type Input struct {
 	ctrl   chan bool
 }
 
+func (input Input) GetEventQ() chan termbox.Event {
+	return input.eventQ
+}
+
 func newInput() *Input {
 	i := Input{eventQ: make(chan termbox.Event),
 		ctrl:   make(chan bool, 2),
