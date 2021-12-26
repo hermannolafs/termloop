@@ -9,12 +9,12 @@ import (
 // Represents a top-level Termloop application.
 type Game struct {
 	screen *Screen
-	input  *input
+	input  *Input
 	debug  bool
 	logs   []string
 }
 
-// NewGame creates a new Game, along with a Screen and input handler.
+// NewGame creates a new Game, along with a Screen and Input handler.
 // Returns a pointer to the new Game.
 func NewGame() *Game {
 	g := Game{
@@ -30,10 +30,15 @@ func (g *Game) Screen() *Screen {
 	return g.screen
 }
 
+// Input returns the Input for a Game.
+func (g *Game) Input() *Input {
+	return g.input
+}
+
 // SetScreen sets the current Screen of a Game.
 func (g *Game) SetScreen(s *Screen) {
 	g.screen = s
-	g.screen.resize(termbox.Size())
+	g.screen.Resize(termbox.Size())
 }
 
 // DebugOn returns a bool showing whether or not debug mode is on.
@@ -86,9 +91,9 @@ func (g *Game) Start() {
 	}
 	defer g.dumpLogs()
 	defer termbox.Close()
-	g.screen.resize(termbox.Size())
+	g.screen.Resize(termbox.Size())
 
-	// Init input
+	// Init Input
 	g.input.start()
 	defer g.input.stop()
 	clock := time.Now()
@@ -104,7 +109,7 @@ mainloop:
 			if ev.Key == g.input.endKey {
 				break mainloop
 			} else if EventType(ev.Type) == EventResize {
-				g.screen.resize(ev.Width, ev.Height)
+				g.screen.Resize(ev.Width, ev.Height)
 			} else if EventType(ev.Type) == EventError {
 				g.Log(ev.Err.Error())
 			}

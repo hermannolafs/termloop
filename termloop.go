@@ -69,7 +69,7 @@ func CanvasFromString(str string) Canvas {
 
 // Drawable represents something that can be drawn, and placed in a Level.
 type Drawable interface {
-	Tick(Event)   // Method for processing events, e.g. input
+	Tick(Event)   // Method for processing events, e.g. Input
 	Draw(*Screen) // Method for drawing to the screen
 }
 
@@ -119,9 +119,9 @@ func (c *Cell) equals(c2 *Cell) bool {
 		c.Ch == c2.Ch
 }
 
-// Provides an event, for input, errors or resizing.
+// Provides an event, for Input, errors or resizing.
 // Resizing and errors are largely handled by Termloop itself
-// - this would largely be used for input.
+// - this would largely be used for Input.
 type Event struct {
 	Type   EventType // The type of event
 	Key    Key       // The key pressed, if any

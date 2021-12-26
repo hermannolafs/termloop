@@ -27,7 +27,7 @@ func NewScreen() *Screen {
 	return &s
 }
 
-// Tick is used to process events such as input. It is called
+// Tick is used to process events such as Input. It is called
 // on every frame by the Game.
 func (s *Screen) Tick(ev Event) {
 	// TODO implement ticks using worker pools
@@ -66,7 +66,7 @@ func (s *Screen) Draw() {
 	s.oldCanvas = s.canvas
 }
 
-func (s *Screen) resize(w, h int) {
+func (s *Screen) Resize(w, h int) {
 	s.width = w
 	s.height = h
 	if s.pixelMode {
